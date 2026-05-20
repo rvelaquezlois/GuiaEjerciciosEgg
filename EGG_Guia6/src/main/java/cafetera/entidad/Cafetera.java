@@ -9,20 +9,15 @@ package cafetera.entidad;
  * @author elpir
  */
 public class Cafetera {
-    private int cantidadMaxima;
+    private final int cantidadMaxima = 1000;
     private int cantidadActual;
 
-    public Cafetera(int cantidadMaxima, int cantidadActual) {
-        this.cantidadMaxima = cantidadMaxima;
+    public Cafetera(int cantidadActual) {
         this.cantidadActual = cantidadActual;
     }
 
     public int getCantidadMaxima() {
         return cantidadMaxima;
-    }
-
-    public void setCantidadMaxima(int cantidadMaxima) {
-        this.cantidadMaxima = cantidadMaxima;
     }
 
     public int getCantidadActual() {

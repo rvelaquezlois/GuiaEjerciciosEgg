@@ -13,6 +13,8 @@ import libro.entidades.Libro;
 import libro.servicios.ServicioLibro;
 import numeros.entidad.Numeros;
 import numeros.servicio.ServicioNumeros;
+import persona.entidad.Persona;
+import persona.servicio.ServicioPersona;
 import rectangulo.entidad.Rectangulo;
 import rectangulo.servicios.ServicioRectangulo;
 
@@ -90,8 +92,61 @@ public class EGG_Guia6 {
                         System.out.println("CONSULTA DATOS");
                         scuenta.muestraDatos(cuenta);
                         break;
+                        
                 }
-
+                break;
+            case 6:
+                
+                break;
+            case 7:
+                ServicioPersona sp = new ServicioPersona();
+                Persona p1 = sp.crearPersona();
+                Persona p2 = sp.crearPersona();
+                Persona p3 = sp.crearPersona();
+                Persona p4 = sp.crearPersona();
+                
+                Persona[] personas={p1, p2, p3, p4};
+                
+                int bajoPeso=0;
+                int pesoIdeal=0;
+                int sobrepeso=0;
+                int mayores=0;
+                int menores=0;
+                
+                for(Persona p:personas){
+                    int resultadoIMC = sp.calcularIMC(p);
+                    
+                    if(resultadoIMC==-1){
+                        bajoPeso++;
+                    }else if(resultadoIMC==0){
+                        pesoIdeal++;
+                    }else if(resultadoIMC==1){
+                        sobrepeso++;
+                    }
+                    
+                    boolean esMayor = sp.esMayor(p);
+                    
+                    if(esMayor==true){
+                        mayores++;
+                    }else{
+                        menores++;
+                    }
+                }
+                
+                double porcentajeBajo = (bajoPeso*100)/personas.length;
+                double porcentajeIdeal = (pesoIdeal*100)/personas.length;
+                double porcentajeSobrepeso = (sobrepeso*100)/personas.length;
+                
+                System.out.println("El "+porcentajeBajo+"% tiene bajo peso\nEl "+porcentajeIdeal+"% tiene un peso ideal"
+                        + "\nEl "+porcentajeSobrepeso+"% tiene sobrepeso");
+                
+                double porcentajeMayor = (mayores*100)/personas.length;
+                double porcentajeMenor = (menores*100)/personas.length;
+                
+                System.out.println("El "+porcentajeMayor+"% es mayor de edad\nEl "+porcentajeMenor+"% es menor de edad");
+                break;
+                
+                
         }
             
         
